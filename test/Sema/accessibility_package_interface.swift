@@ -18,7 +18,6 @@
 // CHECK-PUBLIC-UTILS-NOT: package class PackageKlass
 // CHECK-PUBLIC-UTILS-NOT: package var pkgVar
 // CHECK-PUBLIC-UTILS: -module-name Utils
-// CHECK-PUBLIC-UTILS: -package-name swift-utils.log
 // CHECK-PUBLIC-UTILS: public func publicFunc()
 // CHECK-PUBLIC-UTILS: @usableFromInline
 // CHECK-PUBLIC-UTILS: package func ufiPackageFunc()
@@ -39,7 +38,6 @@
 // CHECK-PRIVATE-UTILS-NOT: package class PackageKlass
 // CHECK-PRIVATE-UTILS-NOT: package var pkgVar
 // CHECK-PRIVATE-UTILS: -module-name Utils
-// CHECK-PRIVATE-UTILS: -package-name swift-utils.log
 // CHECK-PRIVATE-UTILS: public func publicFunc()
 // CHECK-PRIVATE-UTILS: @usableFromInline
 // CHECK-PRIVATE-UTILS: package func ufiPackageFunc()

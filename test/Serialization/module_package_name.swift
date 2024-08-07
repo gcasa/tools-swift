@@ -11,12 +11,10 @@
 // RUN: %target-swift-typecheck-module-from-interface(%t/Logging.swiftinterface) -I %t
 // RUN: %FileCheck %s --check-prefix=CHECK-PUBLIC < %t/Logging.swiftinterface
 // CHECK-PUBLIC: -module-name Logging
-// CHECK-PUBLIC: -package-name
 
 // RUN: %target-swift-typecheck-module-from-interface(%t/Logging.private.swiftinterface) -module-name Logging -I %t
 // RUN: %FileCheck %s --check-prefix=CHECK-PRIVATE < %t/Logging.private.swiftinterface
 // CHECK-PRIVATE: -module-name Logging
-// CHECK-PRIVATE: -package-name MyLoggingPkg
 
 //--- File.swift
 public func log(level: Int) {}

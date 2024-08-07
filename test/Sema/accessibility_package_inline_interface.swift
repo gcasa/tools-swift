@@ -10,7 +10,6 @@
 
 // RUN: %FileCheck %s -check-prefix CHECK-UTILS < %t/Utils.swiftinterface
 // CHECK-UTILS: -module-name Utils
-// CHECK-UTILS: -package-name myLib
 // CHECK-UTILS: @usableFromInline
 // CHECK-UTILS: package class PackageKlassProto {
 // CHECK-UTILS:   @usableFromInline

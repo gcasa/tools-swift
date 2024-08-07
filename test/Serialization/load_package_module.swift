@@ -19,15 +19,10 @@
 // RUN: %target-swift-typecheck-module-from-interface(%t/LibInterface.swiftinterface) -I %t
 // RUN: %FileCheck %s --check-prefix=CHECK-PUBLIC < %t/LibInterface.swiftinterface
 // CHECK-PUBLIC: -module-name LibInterface
-// CHECK-PUBLIC: -package-name
 
-// RUN: %target-swift-typecheck-module-from-interface(%t/LibInterface.private.swiftinterface) -module-name LibInterface -I %t
-// RUN: %FileCheck %s --check-prefix=CHECK-PRIVATE < %t/LibInterface.private.swiftinterface
-// CHECK-PRIVATE: -package-name libPkg
+// RUN: %target-swift-typecheck-module-from-interface(%t/LibInterface.private.swiftinterface) -module-name LibInterface -I %t -verify
 
-// RUN: not %target-swift-frontend -typecheck %t/ClientLoadInterface.swift -package-name otherPkg -I %t 2> %t/resultX.output
-// RUN: %FileCheck %s -check-prefix CHECK-X < %t/resultX.output
-// CHECK-X: error: cannot find 'packageLog' in scope
+// RUN: %target-swift-frontend -typecheck %t/ClientLoadInterface.swift -package-name otherPkg -I %t -verify
 
 // RUN: not %target-swift-frontend -typecheck %t/ClientLoadInterface.swift -package-name libPkg -I %t 2> %t/resultY.output
 // RUN: %FileCheck %s -check-prefix CHECK-Y < %t/resultY.output
@@ -45,7 +40,7 @@ import LibInterface
 
 func someFunc() {
   publicLog(1)
-  packageLog(2)
+  packageLog(2) // expected-error {{cannot find 'packageLog' in scope}}
 }
 
 //--- ClientLoadBinary.swift
